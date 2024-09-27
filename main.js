@@ -13,5 +13,17 @@ client.on("qr", (qr) => {
   console.log("QR RECEIVED", qr);
 });
 
+// Listening to all incoming messages
+client.on("message_create", (message) => {
+  console.log(message.body);
+});
+
+client.on("message_create", (message) => {
+  if (message.body === "!ping") {
+    // send back "pong" to the chat the message was sent in
+    client.sendMessage(message.from, "pong");
+  }
+});
+
 // Start your client
 client.initialize();
