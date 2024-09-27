@@ -1,7 +1,9 @@
 const { Client } = require("whatsapp-web.js");
 
 // Create a new client instance
-const client = new Client();
+const client = new Client({
+  authStrategy: new LocalAuth(),
+});
 
 // When the client is ready, run this code (only once)
 client.once("ready", () => {
